@@ -1,0 +1,59 @@
+{
+	"name": "react-dropper",
+	"version": "0.0.1",
+	"description": "Pick color from image in React",
+	"main": "dist/index.js",
+	"style": "src/index.css",
+	"scripts": {
+		"clear": "rm -rf dist",
+		"start": "tsc -w",
+		"build": "yarn clear && tsc --build tsconfig.json",
+		"test": "jest",
+		"lint": "tslint -c tslint.json --project tsconfig.json",
+		"prepare": "yarn lint && yarn build && yarn test"
+	},
+	"keywords": [
+		"React",
+		"Accordion",
+		"Typescript",
+		"Widget"
+	],
+	"author": "Atanas Atanasov <scriptex.bg@gmail.com> (https://atanas.info)",
+	"repository": "https://github.com/scriptex/react-dropper",
+	"bugs": {
+		"url": "https://github.com/scriptex/react-dropper/issues",
+		"email": "scriptex.bg@gmail.com"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"react": "16.8.6",
+		"react-dom": "16.8.6"
+	},
+	"peerDependencies": {
+		"react": "16.8.6",
+		"react-dom": "16.8.6"
+	},
+	"devDependencies": {
+		"@types/jest": "24.0.11",
+		"@types/react": "16.8.14",
+		"@types/react-dom": "16.8.4",
+		"@types/react-test-renderer": "16.8.1",
+		"jest": "24.7.1",
+		"react-test-renderer": "16.8.6",
+		"ts-jest": "24.0.2",
+		"tslint": "5.16.0",
+		"tslint-react": "3.6.0",
+		"typescript": "3.4.4"
+	},
+	"jest": {
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js"
+		],
+		"transform": {
+			"\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+		},
+		"testRegex": "/__tests__/.*\\.(ts|tsx|js)$"
+	}
+}
