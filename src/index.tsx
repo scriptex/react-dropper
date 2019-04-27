@@ -105,7 +105,7 @@ export class Dropper extends React.Component<Props, State> {
     }
 
     if (e.type === 'click') {
-      this.props.onChange(newColor, false);
+      this.props.onChange(newColor, true);
     }
   };
 }
