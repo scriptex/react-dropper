@@ -1,23 +1,29 @@
 import * as React from 'react';
-import { render } from 'react-dom';
+import * as ReactDOM from 'react-dom';
 
-import Dropper from '../src/';
+import { Dropper } from '../src';
 
-render(
-	<Dropper
-		size={1}
-		width={200}
-		height={250}
-		image="https://via.placeholder.com/150"
-		onSelect={props => {
-			console.log(props);
-		}}
-		onMouseMove={props => {
-			console.log(props);
-		}}
-		onTouchMove={props => {
-			console.log(props);
-		}}
-	/>,
-	document.getElementById('demo')
+// @ts-ignore
+import * as Avatar from './atanas.jpeg';
+
+const get = (id: string): HTMLElement | null => document.getElementById(id);
+
+ReactDOM.render(
+  <Dropper
+    width={400}
+    height={400}
+    color="#000000"
+    image={Avatar}
+    className="react-dropper"
+    onChange={(color, sync) => {
+      if (get('result')) {
+        get('result')!.style.backgroundColor = color;
+      }
+
+      if (sync) {
+        alert('Color set to ' + color);
+      }
+    }}
+  />,
+  get('demo')
 );

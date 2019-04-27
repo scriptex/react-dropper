@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-	</head>
-	<body>
-		<div id="demo"></div>
-		<!-- /#demo -->
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Dropper Demo</title>
+
+    <style>
+      canvas {
+        position: relative;
+        display: block;
+        margin: auto;
+        cursor: crosshair;
+      }
+
+      #result {
+        width: 4rem;
+        height: 4rem;
+        margin: 1rem auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo"></div>
+
+    <div id="result" style="background-color: black;"></div>
+
+    <script src="../node_modules/react/umd/react.development.js"></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+
+    <script src="./bundle.js"></script>
+  </body>
 </html>
