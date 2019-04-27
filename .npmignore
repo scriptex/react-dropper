@@ -40,3 +40,10 @@ webpack.config.js
 # Prettier
 .prettierrc
 .prettierignore
+
+# Tests
+__tests__
+test-setup.js
+
+# Demo
+demo
