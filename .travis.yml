@@ -1,8 +1,10 @@
 language: node_js
 sudo: false
 node_js:
-  - "8.15.1"
+  - '8.15.1'
 install:
   - yarn
 script:
   - yarn prepare
+  - yarn demo
+  - yarn test:coverage
