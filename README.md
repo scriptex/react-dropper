@@ -30,38 +30,40 @@ Info about the component
 import React from 'react';
 import Dropper from 'react-dropper';
 
-import * as MyImage from '../images/image.jpg';
+import MyImage from '../images/image.jpg';
 
 ReactDOM.render(
 	<Dropper
-		size={1}
-		width={200}
-		height={250}
+		width={400}
+		height={400}
+		color="#000000"
 		image={MyImage}
-		onSelect={(props) => {
-			console.log(props);
+		className="react-dropper"
+		onChange={(color, sync) => {
+			// Based on the event type
+			// the color can be updated or not
+			// If the event type is click the color is updated
+			// If the event type is mousemove or click, the color is the updated color
+			// If the event type is mouseleave, the color is the old color (coming from props)
+
+			// The sync flag indicates whether the color has been updated
 		}}
-		onMouseMove={(props) => {
-			console.log(props);
-		}}
-		onTouchMove={(props) => {
-			console.log(props);
-		}}
-	/>,
+  	/>,
 	document.getElementById('demo')
 );
 ```
 
 ## Props
 
-1. Size - the size of the picker or how many pixels to get - default 1
-2. Width - width of the canvas area
-3. Height - height of the canvas area
+1. Width - width of the canvas area
+2. Height - height of the canvas area
+3. Color - the initial color of the canvas
 4. Image - url of the image asset - JPG or PNG supported and CORS enabled for external resources
-5. onSelect - function which accepts `props` object as argument
-6. onMouseMove - function which accepts `props` object as argument
-7. onTouchMove - function which accepts `props` object as argument
+5. onChange - function which accepts `color` and `sync` arguments (explained above)
 
+## Demo
+
+Please [click here](https://github.com/scriptex/react-dropper/demo/index.html) to see the demo.
 
 ## LICENSE
 
