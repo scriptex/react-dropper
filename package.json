@@ -45,7 +45,7 @@
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
     "file-loader": "4.2.0",
-    "jest": "24.8.0",
+    "jest": "24.9.0",
     "jest-css-modules": "2.1.0",
     "react-test-renderer": "16.9.0",
     "source-map-loader": "0.2.4",
