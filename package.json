@@ -43,7 +43,7 @@
     "@types/react-test-renderer": "16.9.0",
     "awesome-typescript-loader": "5.2.1",
     "enzyme": "3.10.0",
-    "enzyme-adapter-react-16": "1.14.0",
+    "enzyme-adapter-react-16": "1.15.0",
     "file-loader": "4.2.0",
     "jest": "24.9.0",
     "jest-css-modules": "2.1.0",
