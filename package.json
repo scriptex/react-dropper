@@ -42,7 +42,7 @@
     "@types/react-dom": "16.9.4",
     "@types/react-test-renderer": "16.9.1",
     "awesome-typescript-loader": "5.2.1",
-    "enzyme": "3.10.0",
+    "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
     "file-loader": "5.0.2",
     "jest": "24.9.0",
