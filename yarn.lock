@@ -526,10 +526,10 @@
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@25.1.2":
-  version "25.1.2"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-25.1.2.tgz#1c4c8770c27906c7d8def5d2033df9dbd39f60da"
-  integrity sha512-EsPIgEsonlXmYV7GzUqcvORsSS9Gqxw/OvkGwHfAdpjduNRxMlhsav0O5Kb0zijc/eXSO/uW6SJt9nwull8AUQ==
+"@types/jest@25.1.3":
+  version "25.1.3"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-25.1.3.tgz#9b0b5addebccfb631175870be8ba62182f1bc35a"
+  integrity sha512-jqargqzyJWgWAJCXX96LBGR/Ei7wQcZBvRv0PLEu9ZByMfcs23keUJrKv9FMR6YZf9YCbfqDqgmY+JUBsnqhrg==
   dependencies:
     jest-diff "^25.1.0"
     pretty-format "^25.1.0"
@@ -1311,11 +1311,6 @@ callsites@^3.0.0:
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
-camelcase@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
-  integrity sha1-1UVjW+HjPFQmScaRc+Xeas+uNN0=
-
 camelcase@^5.0.0, camelcase@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
@@ -1930,6 +1925,11 @@ emojis-list@^2.0.0:
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
   integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
 
+emojis-list@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
+  integrity sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
+
 end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.4.tgz#5ae64a5f45057baf3626ec14da0ca5e4b2431eb0"
@@ -2312,12 +2312,12 @@ figgy-pudding@^3.5.1:
   resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.1.tgz#862470112901c727a0e495a80744bd5baa1d6790"
   integrity sha512-vNKxJHTEKNThjfrdJwHc7brvM6eVevuO5nTj6ez8ZQ1qbXTvGthucRF7S4vf2cr71QVnT70V34v0S1DyQsti0w==
 
-file-loader@5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-5.0.2.tgz#7f3d8b4ac85a5e8df61338cfec95d7405f971caa"
-  integrity sha512-QMiQ+WBkGLejKe81HU8SZ9PovsU/5uaLo0JdTCEXOYv7i7jfAjHZi1tcwp9tSASJPOmmHZtbdCervFmXMH/Dcg==
+file-loader@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-5.1.0.tgz#cb56c070efc0e40666424309bd0d9e45ac6f2bb8"
+  integrity sha512-u/VkLGskw3Ue59nyOwUwXI/6nuBCo7KBkniB/l7ICwr/7cPNGsL1WCXUp3GB0qgOOKU1TiP49bv4DZF/LJqprg==
   dependencies:
-    loader-utils "^1.2.3"
+    loader-utils "^1.4.0"
     schema-utils "^2.5.0"
 
 fill-range@^4.0.0:
@@ -3665,6 +3665,15 @@ loader-utils@1.2.3, loader-utils@^1.1.0, loader-utils@^1.2.3:
   dependencies:
     big.js "^5.2.2"
     emojis-list "^2.0.0"
+    json5 "^1.0.1"
+
+loader-utils@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.4.0.tgz#c579b5e34cb34b1a74edc6c1fb36bfa371d5a613"
+  integrity sha512-qH0WSMBtn/oHuwjy/NucEgbx5dbxxnxup9s4PVXJUDHZBQY+s0NWA9rJf53RBnQZxfch7euUui7hpoAPvALZdA==
+  dependencies:
+    big.js "^5.2.2"
+    emojis-list "^3.0.0"
     json5 "^1.0.1"
 
 locate-path@^3.0.0:
@@ -5644,10 +5653,10 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
-ts-jest@25.2.0:
-  version "25.2.0"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-25.2.0.tgz#dfd87c2b71ef4867f5a0a44f40cb9c67e02991ac"
-  integrity sha512-VaRdb0da46eorLfuHEFf0G3d+jeREcV+Wb/SvW71S4y9Oe8SHWU+m1WY/3RaMknrBsnvmVH0/rRjT8dkgeffNQ==
+ts-jest@25.2.1:
+  version "25.2.1"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-25.2.1.tgz#49bf05da26a8b7fbfbc36b4ae2fcdc2fef35c85d"
+  integrity sha512-TnntkEEjuXq/Gxpw7xToarmHbAafgCaAzOpnajnFC6jI7oo1trMzAHA04eWpc3MhV6+yvhE8uUBAmN+teRJh0A==
   dependencies:
     bs-logger "0.x"
     buffer-from "1.x"
@@ -5658,7 +5667,7 @@ ts-jest@25.2.0:
     mkdirp "0.x"
     resolve "1.x"
     semver "^5.5"
-    yargs-parser "10.x"
+    yargs-parser "^16.1.0"
 
 tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.10.0"
@@ -6110,13 +6119,6 @@ yallist@^3.0.0, yallist@^3.0.2, yallist@^3.0.3:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.1.1.tgz#dbb7daf9bfd8bac9ab45ebf602b8cbad0d5d08fd"
   integrity sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==
-
-yargs-parser@10.x:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-10.1.0.tgz#7202265b89f7e9e9f2e5765e0fe735a905edbaa8"
-  integrity sha512-VCIyR1wJoEBZUqk5PA+oOBF6ypbwh5aNB3I50guxAL/quggdfs4TtNHQrSazFA3fYZ+tEqfs0zIGlv0c/rgjbQ==
-  dependencies:
-    camelcase "^4.1.0"
 
 yargs-parser@^13.1.0:
   version "13.1.1"
