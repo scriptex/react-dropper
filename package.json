@@ -44,7 +44,7 @@
     "awesome-typescript-loader": "5.2.1",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
-    "file-loader": "5.1.0",
+    "file-loader": "6.0.0",
     "jest": "25.1.0",
     "jest-css-modules": "2.1.0",
     "react-test-renderer": "16.13.0",
