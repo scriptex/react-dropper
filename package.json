@@ -28,12 +28,12 @@
   },
   "license": "MIT",
   "dependencies": {
-    "react": "16.13.0",
-    "react-dom": "16.13.0"
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   },
   "peerDependencies": {
-    "react": "16.13.0",
-    "react-dom": "16.13.0"
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   },
   "devDependencies": {
     "@types/enzyme": "3.10.5",
@@ -47,7 +47,7 @@
     "file-loader": "6.0.0",
     "jest": "25.1.0",
     "jest-css-modules": "2.1.0",
-    "react-test-renderer": "16.13.0",
+    "react-test-renderer": "16.13.1",
     "source-map-loader": "0.2.4",
     "ts-jest": "25.2.1",
     "tslint": "6.1.0",
