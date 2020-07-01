@@ -48,7 +48,7 @@
     "jest": "26.1.0",
     "jest-css-modules": "2.1.0",
     "react-test-renderer": "16.13.1",
-    "source-map-loader": "1.0.0",
+    "source-map-loader": "1.0.1",
     "ts-jest": "26.1.1",
     "tslint": "6.1.2",
     "tslint-react": "5.0.0",
