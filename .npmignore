@@ -31,10 +31,14 @@ Thumbs.db
 yarn.lock
 
 # Config files
+.github
+.whitesource
 _config.yml
 _.config.yml
 renovate.json
 rollup.config.js
+tsconfig.json
+tslint.json
 webpack.config.js
 
 # Prettier
