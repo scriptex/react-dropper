@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { JSDOM } from 'jsdom';
 import { shallow } from 'enzyme';
 
 import { Dropper } from '../src';
+
+global.Image = new JSDOM('').window.Image;
 
 describe('React Dropper component', () => {
   it('should render successfully with default props', () => {
