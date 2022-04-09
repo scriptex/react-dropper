@@ -36,7 +36,7 @@
     "react-dom": "18.0.0"
   },
   "devDependencies": {
-    "@types/enzyme": "3.10.11",
+    "@types/enzyme": "3.10.12",
     "@types/jest": "27.4.1",
     "@types/jsdom": "16.2.14",
     "@types/react": "18.0.0",
