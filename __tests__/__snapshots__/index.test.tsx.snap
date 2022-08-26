@@ -4,8 +4,4 @@ exports[`React Dropper component should render successfully 1`] = `ShallowWrappe
 
 exports[`React Dropper component should render successfully 2`] = `ShallowWrapper {}`;
 
-exports[`React Dropper component should render successfully 3`] = `ShallowWrapper {}`;
-
 exports[`React Dropper component should render successfully with default props 1`] = `ShallowWrapper {}`;
-
-exports[`React Dropper component should render successfully with mocked DOM 1`] = `ShallowWrapper {}`;

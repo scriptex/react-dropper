@@ -1,111 +1,88 @@
 import * as React from 'react';
 
 interface Props {
-  readonly width: number;
-  readonly height: number;
-  readonly color: string;
-  readonly image: string;
-  readonly className: string;
-  readonly onChange: (color: string, sync: boolean) => any;
+  width: number;
+  height: number;
+  color: string;
+  image: string;
+  className: string;
+  onChange: (color: string, sync: boolean) => any;
 }
 
-interface State {
-  oldColor: string;
-}
+export const Dropper: React.FC<Readonly<Partial<Props>>> = ({
+  width = 300,
+  height = 150,
+  color = '#ffffff',
+  image = '',
+  className = 'react-dropper',
+  onChange = (): any => undefined
+}: Partial<Props>) => {
+  const canvas: React.MutableRefObject<HTMLCanvasElement | null> = React.createRef();
+  const [oldColor] = React.useState(color);
 
-export class Dropper extends React.Component<Props, State> {
-  private canvas: React.Ref<HTMLCanvasElement> = React.createRef();
-
-  public static defaultProps: Props = {
-    width: 300,
-    height: 150,
-    color: '#ffffff',
-    image: '',
-    className: 'react-dropper',
-    onChange: (color: string, sync: boolean): any => undefined
-  };
-
-  public state: State = {
-    oldColor: ''
-  };
-
-  public componentWillMount(): void {
-    this.setState({
-      oldColor: this.props.color
-    });
-  }
-
-  public render(): React.ReactNode {
-    this.drawImage();
-
-    return (
-      <canvas
-        className={this.props.className}
-        width={this.props.width}
-        height={this.props.height}
-        ref={this.canvas}
-        onClick={this.setColor}
-        onMouseMove={this.setColor}
-        onMouseLeave={this.setColor}
-      />
-    );
-  }
-
-  private drawImage = () => {
+  const drawImage = React.useCallback(() => {
     const imageElement: HTMLImageElement = new Image();
-    const { width, height, image } = this.props;
 
     imageElement.onload = () => {
-      const canvas = (this.canvas as any).current;
-
-      if (canvas && canvas.getContext('2d')) {
-        canvas.getContext('2d').drawImage(imageElement, 0, 0, width, height);
+      if (canvas.current && canvas.current.getContext('2d')) {
+        canvas.current.getContext('2d')?.drawImage(imageElement, 0, 0, width, height);
       }
     };
 
     imageElement.src = image as any;
     imageElement.crossOrigin = 'Anonymous';
-  };
+  }, []);
 
-  private getImageData = (e: React.MouseEvent<HTMLCanvasElement>): number[] => {
-    const canvas = (this.canvas as any).current;
-
-    if (canvas && canvas.getContext('2d')) {
-      const offset = canvas.getBoundingClientRect();
+  const getImageData = React.useCallback((e: React.MouseEvent<HTMLCanvasElement>): Uint8ClampedArray | void => {
+    if (canvas.current && canvas.current.getContext('2d')) {
+      const offset = canvas.current.getBoundingClientRect();
       const canvasX = Math.floor(e.pageX - offset.left);
       const canvasY = Math.floor(e.pageY - offset.top);
-      const imageData = canvas.getContext('2d').getImageData(canvasX, canvasY, 1, 1);
+      const imageData = canvas.current.getContext('2d')?.getImageData(canvasX, canvasY, 1, 1);
 
-      return imageData.data;
+      return imageData?.data;
     }
 
-    return [];
-  };
+    return;
+  }, []);
 
-  private setColor = (e: React.MouseEvent<HTMLCanvasElement>): void => {
+  const setColor = React.useCallback((e: React.MouseEvent<HTMLCanvasElement>): void => {
     e.preventDefault();
 
-    const data = this.getImageData(e);
+    const data = getImageData(e);
 
-    if (!data.length) {
-      this.props.onChange(this.state.oldColor, false);
+    if (!data?.length) {
+      onChange(oldColor, false);
 
       return;
     }
 
-    const [r, g, b]: number[] = this.getImageData(e);
+    const [r, g, b]: Uint8ClampedArray = data;
     const newColor: string = `#${(b + 256 * g + 65536 * r).toString(16)}`;
 
     if (e.type === 'mousemove') {
-      this.props.onChange(newColor, false);
-    }
-
-    if (e.type === 'mouseleave') {
-      this.props.onChange(this.state.oldColor, true);
+      onChange(newColor, false);
     }
 
     if (e.type === 'click') {
-      this.props.onChange(newColor, true);
+      onChange(newColor, true);
     }
-  };
-}
+  }, []);
+
+  React.useEffect(() => {
+    drawImage();
+  }, []);
+
+  return (
+    <canvas
+      ref={canvas}
+      width={width}
+      height={height}
+      className={className}
+      onClick={setColor}
+      onMouseMove={setColor}
+    />
+  );
+};
+
+export default Dropper;

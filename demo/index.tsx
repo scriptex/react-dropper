@@ -1,14 +1,16 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
-import { Dropper } from '../src';
+import { Dropper } from '../dist';
 
 // @ts-ignore
 import * as Avatar from './atanas.jpeg';
 
 const get = (id: string): HTMLElement | null => document.getElementById(id);
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('demo') || document.createElement('div'));
+
+root.render(
   <Dropper
     width={400}
     height={400}
@@ -24,6 +26,5 @@ ReactDOM.render(
         alert('Color set to ' + color);
       }
     }}
-  />,
-  get('demo')
+  />
 );
