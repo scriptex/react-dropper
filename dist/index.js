@@ -19,9 +19,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Dropper = void 0;
 var React = require("react");
 var Dropper = function (_a) {
-    var width = _a.width, height = _a.height, color = _a.color, image = _a.image, className = _a.className, onChange = _a.onChange;
+    var _b = _a.width, width = _b === void 0 ? 300 : _b, _c = _a.height, height = _c === void 0 ? 150 : _c, _d = _a.color, color = _d === void 0 ? '#ffffff' : _d, _e = _a.image, image = _e === void 0 ? '' : _e, _f = _a.className, className = _f === void 0 ? 'react-dropper' : _f, _g = _a.onChange, onChange = _g === void 0 ? function () { return undefined; } : _g;
     var canvas = React.createRef();
-    var _b = __read(React.useState(color), 2), oldColor = _b[0], setOldColor = _b[1];
+    var _h = __read(React.useState(color), 1), oldColor = _h[0];
     var drawImage = React.useCallback(function () {
         var imageElement = new Image();
         imageElement.onload = function () {
@@ -66,12 +66,4 @@ var Dropper = function (_a) {
     return (React.createElement("canvas", { ref: canvas, width: width, height: height, className: className, onClick: setColor, onMouseMove: setColor }));
 };
 exports.Dropper = Dropper;
-exports.Dropper.defaultProps = {
-    width: 300,
-    height: 150,
-    color: '#ffffff',
-    image: '',
-    className: 'react-dropper',
-    onChange: function (color, sync) { return undefined; }
-};
 exports.default = exports.Dropper;

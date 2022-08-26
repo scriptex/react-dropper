@@ -1,17 +1,24 @@
 import * as React from 'react';
 
 interface Props {
-  readonly width: number;
-  readonly height: number;
-  readonly color: string;
-  readonly image: string;
-  readonly className: string;
-  readonly onChange: (color: string, sync: boolean) => any;
+  width: number;
+  height: number;
+  color: string;
+  image: string;
+  className: string;
+  onChange: (color: string, sync: boolean) => any;
 }
 
-export const Dropper: React.FC<Readonly<Props>> = ({ width, height, color, image, className, onChange }: Props) => {
+export const Dropper: React.FC<Readonly<Partial<Props>>> = ({
+  width = 300,
+  height = 150,
+  color = '#ffffff',
+  image = '',
+  className = 'react-dropper',
+  onChange = (): any => undefined
+}: Partial<Props>) => {
   const canvas: React.MutableRefObject<HTMLCanvasElement | null> = React.createRef();
-  const [oldColor, setOldColor] = React.useState(color);
+  const [oldColor] = React.useState(color);
 
   const drawImage = React.useCallback(() => {
     const imageElement: HTMLImageElement = new Image();
@@ -76,15 +83,6 @@ export const Dropper: React.FC<Readonly<Props>> = ({ width, height, color, image
       onMouseMove={setColor}
     />
   );
-};
-
-Dropper.defaultProps = {
-  width: 300,
-  height: 150,
-  color: '#ffffff',
-  image: '',
-  className: 'react-dropper',
-  onChange: (color: string, sync: boolean): any => undefined
 };
 
 export default Dropper;
