@@ -28,7 +28,7 @@ export const Dropper: React.FC<Readonly<Props>> = ({
 
     imageElement.src = image;
     imageElement.crossOrigin = 'Anonymous';
-  }, []);
+  }, [image, width, height, canvas]);
 
   const getImageData = React.useCallback((e: React.MouseEvent<HTMLCanvasElement>): Uint8ClampedArray | void => {
     const target = e.target as HTMLCanvasElement;
@@ -45,25 +45,29 @@ export const Dropper: React.FC<Readonly<Props>> = ({
     return;
   }, []);
 
-  const setColor = React.useCallback((e: React.MouseEvent<HTMLCanvasElement>): void => {
-    e.preventDefault();
+  const setColor = React.useCallback(
+    (e: React.MouseEvent<HTMLCanvasElement>): void => {
+      e.preventDefault();
 
-    const data = getImageData(e);
+      const data = getImageData(e);
 
-    if (!data?.length) {
-      onChange('', '');
+      if (!data?.length) {
+        onChange('', '');
 
-      return;
-    }
+        return;
+      }
 
-    const [r, g, b]: Uint8ClampedArray = data;
-    const newColor: string = `#${(b + 256 * g + 65536 * r).toString(16)}`;
+      const [r, g, b]: Uint8ClampedArray = data;
+      const newColor: string = `#${(b + 256 * g + 65536 * r).toString(16)}`;
 
-    onChange(newColor, e.type);
-  }, []);
+      onChange(newColor, e.type);
+    },
+    [onChange, getImageData]
+  );
 
   React.useEffect(() => {
     drawImage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
