@@ -29,8 +29,6 @@
     "build": "yarn clear && tsc",
     "test": "jest --env jsdom",
     "lint": "eslint 'src/**/*.{ts,tsx}' 'demo/**/*.{ts,tsx}' '__tests__/**/*.{ts,tsx}'",
-    "demo": "parcel build demo/index.html",
-    "demo:watch": "parcel demo/index.html",
     "prod": "yarn build && yarn lint && yarn test"
   },
   "dependencies": {

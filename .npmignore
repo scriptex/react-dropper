@@ -22,6 +22,7 @@ Thumbs.db
 _config.yml
 _.config.yml
 .editorconfig
+.eslintrc
 .gitattributes
 .gitignore
 .nvmrc
@@ -33,7 +34,10 @@ _.config.yml
 .whitesource
 renovate.json
 tsconfig.json
+tsconfig-lint.json
 tslint.json
 yarn.lock
 
 !dist
+__tests__
+demo
