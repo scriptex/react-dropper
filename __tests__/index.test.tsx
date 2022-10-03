@@ -1,35 +1,64 @@
 import * as React from 'react';
-import { JSDOM } from 'jsdom';
-import { shallow } from 'enzyme';
+import { act, render, waitFor, fireEvent, RenderResult } from '@testing-library/react';
 
 import { Dropper } from '../src';
 
-global.Image = new JSDOM('').window.Image;
+const snapshotTest = (
+  Component: React.FC<Readonly<React.ComponentProps<any>>>,
+  callback?: (result: RenderResult) => void
+): void => {
+  const { name } = Component;
 
-describe('React Dropper component', () => {
-  it('should render successfully with default props', () => {
-    const dropper = shallow(<Dropper />);
+  describe(`${name} component`, () => {
+    it(`Should render the ${name} component`, async () => {
+      let result!: RenderResult;
 
-    expect(dropper).toMatchSnapshot();
-  });
+      await act(async () => {
+        result = await waitFor(() => render(<Component />));
+      });
 
-  it('should render successfully', () => {
-    const dropper = shallow(<Dropper width={200} height={200} image="" color="#000000" onChange={jest.fn()} />);
+      const { asFragment } = result;
 
-    dropper.find('canvas').simulate('click', {
-      pageX: 300,
-      pageY: 200,
-      preventDefault: jest.fn()
+      expect(asFragment()).toMatchSnapshot();
+
+      if (typeof callback === 'function') {
+        callback(result);
+      }
     });
 
-    expect(dropper).toMatchSnapshot();
+    it(`Should unmount the ${name} component`, async () => {
+      let result: RenderResult;
 
-    dropper.find('canvas').simulate('mousemove', {
-      pageX: 300,
-      pageY: 200,
-      preventDefault: jest.fn()
+      await act(async () => {
+        result = await waitFor(() => render(<Component />));
+      });
+
+      // @ts-ignore
+      const { unmount, asFragment } = result;
+
+      unmount();
+
+      expect(asFragment()).toMatchSnapshot();
     });
-
-    expect(dropper).toMatchSnapshot();
   });
+};
+
+snapshotTest(Dropper, (result: RenderResult) => {
+  const { container, asFragment } = result;
+
+  fireEvent.click(container.querySelector('canvas')!, {
+    pageX: 300,
+    pageY: 200,
+    preventDefault: jest.fn()
+  });
+
+  expect(asFragment()).toMatchSnapshot();
+
+  fireEvent.mouseMove(container.querySelector('canvas')!, {
+    pageX: 300,
+    pageY: 200,
+    preventDefault: jest.fn()
+  });
+
+  expect(asFragment()).toMatchSnapshot();
 });

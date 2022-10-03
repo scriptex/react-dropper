@@ -1,14 +1,29 @@
-[![GitHub release](https://img.shields.io/github/release/scriptex/react-dropper.svg)](https://github.com/scriptex/react-dropper/releases/latest)
-[![GitHub issues](https://img.shields.io/github/issues/scriptex/react-dropper.svg)](https://github.com/scriptex/react-dropper/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/scriptex/react-dropper.svg)](https://github.com/scriptex/react-dropper/commits/master)
-[![Build Status](https://travis-ci.com/scriptex/react-dropper.svg?branch=master)](https://travis-ci.com/scriptex/react-dropper)
-[![npm](https://img.shields.io/npm/dt/react-dropper.svg)](https://www.npmjs.com/package/react-dropper)
-[![npm](https://img.shields.io/npm/v/react-dropper.svg)](https://www.npmjs.com/package/react-dropper)
-[![Analytics](https://ga-beacon.appspot.com/UA-83446952-1/github.com/scriptex/react-dropper/README.md)](https://github.com/scriptex/react-dropper/)
+[![Travis CI](https://travis-ci.com/scriptex/react-dropper.svg?branch=master)](https://travis-ci.com/scriptex/react-dropper)
+[![Github Build](https://github.com/scriptex/react-dropper/workflows/Build/badge.svg)](https://github.com/scriptex/react-dropper/actions?query=workflow%3ABuild)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/34d3d75710534dc6a38c3584a1dcd068)](https://www.codacy.com/gh/scriptex/react-dropper/dashboard?utm_source=github.com&utm_medium=referral&utm_content=scriptex/react-dropper&utm_campaign=Badge_Grade)
+[![Codebeat Badge](https://codebeat.co/badges/d765a4c8-2c0e-44f2-89c3-fa364fdc14e6)](https://codebeat.co/projects/github-com-scriptex-react-dropper-master)
+[![CodeFactor Badge](https://www.codefactor.io/repository/github/scriptex/react-dropper/badge)](https://www.codefactor.io/repository/github/scriptex/react-dropper)
+[![DeepScan grade](https://deepscan.io/api/teams/3574/projects/5257/branches/40799/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=3574&pid=5257&bid=40799)
+[![Analytics](https://ga-beacon-361907.ew.r.appspot.com/UA-83446952-1/github.com/scriptex/react-dropper/README.md?pixel)](https://github.com/scriptex/react-dropper/)
 
 # React Dropper
 
-Pick color from an image in React
+> Pick a color from any image in React
+
+## Visitor stats
+
+![GitHub stars](https://img.shields.io/github/stars/scriptex/react-dropper?style=social)
+![GitHub forks](https://img.shields.io/github/forks/scriptex/react-dropper?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/scriptex/react-dropper?style=social)
+![GitHub followers](https://img.shields.io/github/followers/scriptex?style=social)
+
+## Code stats
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/scriptex/react-dropper)
+![GitHub repo size](https://img.shields.io/github/repo-size/scriptex/react-dropper?style=plastic)
+![GitHub language count](https://img.shields.io/github/languages/count/scriptex/react-dropper?style=plastic)
+![GitHub top language](https://img.shields.io/github/languages/top/scriptex/react-dropper?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/scriptex/react-dropper?style=plastic)
 
 ## Install
 
@@ -20,15 +35,15 @@ npm i react-dropper
 yarn add react-dropper
 ```
 
-## About
+## Demo
 
-Info about the component
+This component allows you to pick any color from any image rendered in a React application. See [the demo here](https://react-dropper.atanas.info).
 
 ## Usage
 
 ```javascript
 import React from 'react';
-import Dropper from 'react-dropper';
+import { Dropper } from 'react-dropper';
 
 import MyImage from '../images/image.jpg';
 
@@ -36,16 +51,11 @@ ReactDOM.render(
   <Dropper
     width={400}
     height={400}
-    color="#000000"
     image={MyImage}
     className="react-dropper"
-    onChange={(color, sync) => {
-      // Based on the event type
-      // the color can be updated or not
-      // If the event type is click the color is updated
-      // If the event type is mousemove or click, the color is the updated color
-      // If the event type is mouseleave, the color is the old color (coming from props)
-      // The sync flag indicates whether the color has been updated
+    onChange={(color, event) => {
+      // The color is the selected color
+      // The event is the event type - click, mousemove, etc
     }}
   />,
   document.getElementById('demo')
@@ -54,15 +64,18 @@ ReactDOM.render(
 
 ## Props
 
-1. Width - width of the canvas area
-2. Height - height of the canvas area
-3. Color - the initial color of the canvas
-4. Image - url of the image asset - JPG or PNG supported and CORS enabled for external resources
-5. onChange - function which accepts `color` and `sync` arguments (explained above)
+| Prop        | Type       | Required | Default                                  | Description                                                           |
+| ----------- | ---------- | -------- | ---------------------------------------- | --------------------------------------------------------------------- |
+| `image`     | `string`   | true     | ''                                       | URL of the image asset (JPG or PNG) -CORS enabled for external assets |
+| `width`     | `number`   | false    | 300                                      | Width of the canvas area (in px)                                      |
+| `height`    | `number`   | false    | 150                                      | Height of the canvas area (in px)                                     |
+| `className` | `string`   | false    | 'react-dropper'                          | CSS classname for the rendered element                                |
+| `onChange`  | `function` | false    | (color: string, type: string) => unknown | An optional function which accepts two arguments                      |
 
-## Demo
+The `onChange` function accepts two arguments:
 
-Please [click here](https://github.com/scriptex/react-dropper/demo/index.html) to see the demo.
+- `color`: the selected color
+- `type`: the type of the event - 'click', 'mousemove', etc. Useful when deciding whether you want to store the color or not.
 
 ## LICENSE
 
@@ -129,18 +142,34 @@ MIT
 ---
 
 <div align="center">
-    Support and sponsor my work:<br /><br />
-
-[![Tweet](https://img.shields.io/badge/Tweet-Share_my_profile-blue.svg?logo=twitter&color=38A1F3)](https://twitter.com/intent/tweet?text=Checkout%20this%20awesome%20developer%20profile%3A&url=https%3A%2F%2Fgithub.com%2Fscriptex&via=scriptexbg&hashtags=software%2Cgithub%2Ccode%2Cawesome)
-
-[![Donate on Paypal](https://img.shields.io/badge/Donate-Support_me_on_PayPal-blue.svg?logo=paypal&color=222d65)](https://paypal.me/scriptex)
-[![Donate on Revolut](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/revolut.json)](https://revolut.me/scriptex)
-[![Become a Patron](https://img.shields.io/badge/Become_Patron-Support_me_on_Patreon-blue.svg?logo=patreon&color=e64413)](https://patreon.com/atanas)
-[![Buy Me A Coffee](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-yellow.svg?logo=ko-fi)](https://ko-fi.com/scriptex)
-[![Donate on Liberapay](https://img.shields.io/liberapay/receives/scriptex?label=Donate%20on%20Liberapay&logo=liberapay)](https://liberapay.com/scriptex/donate)
-
-![Donate Bitcoin](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/bitcoin.json)<br />
-![Donate Etherium](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/etherium.json)<br />
-![Donate Shiba Inu](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/shiba-inu.json)
-
+Support and sponsor my work:
+<br />
+<br />
+<a href="https://twitter.com/intent/tweet?text=Checkout%20this%20awesome%20developer%20profile%3A&url=https%3A%2F%2Fgithub.com%2Fscriptex&via=scriptexbg&hashtags=software%2Cgithub%2Ccode%2Cawesome" title="Tweet">
+	<img src="https://img.shields.io/badge/Tweet-Share_my_profile-blue.svg?logo=twitter&color=38A1F3" />
+</a>
+<a href="https://paypal.me/scriptex" title="Donate on Paypal">
+	<img src="https://img.shields.io/badge/Donate-Support_me_on_PayPal-blue.svg?logo=paypal&color=222d65" />
+</a>
+<a href="https://revolut.me/scriptex" title="Donate on Revolut">
+	<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/revolut.json" />
+</a>
+<a href="https://patreon.com/atanas" title="Become a Patron">
+	<img src="https://img.shields.io/badge/Become_Patron-Support_me_on_Patreon-blue.svg?logo=patreon&color=e64413" />
+</a>
+<a href="https://ko-fi.com/scriptex" title="Buy Me A Coffee">
+	<img src="https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-yellow.svg?logo=ko-fi" />
+</a>
+<a href="https://liberapay.com/scriptex/donate" title="Donate on Liberapay">
+	<img src="https://img.shields.io/liberapay/receives/scriptex?label=Donate%20on%20Liberapay&logo=liberapay" />
+</a>
+<a href="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/bitcoin.json" title="Donate Bitcoin">
+	<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/bitcoin.json" />
+</a>
+<a href="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/etherium.json" title="Donate Etherium">
+	<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/etherium.json" />
+</a>
+<a href="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/shiba-inu.json" title="Donate Shiba Inu">
+	<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/shiba-inu.json" />
+</a>
 </div>

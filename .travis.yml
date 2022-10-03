@@ -5,6 +5,4 @@ node_js:
 install:
   - yarn
 script:
-  - yarn prepare
-  - yarn demo
-  - yarn test:coverage
+  - yarn prod

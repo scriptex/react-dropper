@@ -3,31 +3,210 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React Dropper Demo</title>
 
-    <style>
-      canvas {
-        position: relative;
-        display: block;
-        margin: auto;
-        cursor: crosshair;
+    <title>React Dropper</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"
+    />
+
+    <script
+      src="https://unpkg.com/scriptex-socials"
+      async
+      integrity="sha384-FDS8WECJvE4bGb+arLPh3DSv0mrVHD+hJRf+UaM6rVMT+wBleSgUlog90rrtgHH1"
+      crossorigin="anonymous"
+    ></script>
+
+    <style type="text/css" media="screen">
+      * {
+        box-sizing: border-box;
       }
 
-      #result {
-        width: 4rem;
-        height: 4rem;
-        margin: 1rem auto;
+      body {
+        font-family: sans-serif;
+        font-size: 1rem;
+        line-height: 1.25;
+        margin: 0;
+      }
+
+      main {
+        max-width: 1200px;
+        padding: 1rem 1rem 0;
+        margin: auto;
+      }
+
+      p,
+      h1,
+      h2,
+      h4 {
+        margin: 0 0 1rem;
+      }
+
+      h2 {
+        text-align: center;
+        margin: 1rem 0;
+      }
+
+      pre,
+      .result {
+        display: block;
+        overflow: auto;
+        padding: 1rem;
+        background: #dfdfdf;
+      }
+
+      .result p:last-child {
+        margin: 0;
+      }
+
+      social-links {
+        display: block;
+        padding-bottom: 1rem;
+      }
+
+      .row {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 0 -1rem;
+      }
+
+      .col {
+        max-width: 50%;
+        flex: 0 0 50%;
+        padding: 0 1rem;
+      }
+
+      .box {
+        width: 77.5%;
+        height: 0;
+        padding-bottom: 77.5%;
+        margin: auto;
+        position: relative;
+        border: 1px solid;
+      }
+
+      #touchsweep {
+        cursor: grab;
+      }
+
+      #touchsweep::before {
+        content: 'Swipe here';
+        text-align: center;
+        text-transform: uppercase;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        left: 0;
+      }
+
+      @media (max-width: 1023px) {
+        social-links {
+          padding: 1rem 0;
+        }
+
+        .row {
+          display: block;
+          margin: 0;
+        }
+
+        .col {
+          max-width: none;
+          padding: 0;
+        }
+
+        .box {
+          width: 100%;
+          padding-bottom: 100%;
+        }
       }
     </style>
   </head>
   <body>
-    <div id="demo"></div>
+    <a
+      href="https://github.com/scriptex/react-dropper"
+      title="See code on Github"
+      class="github-fork-ribbon"
+      data-ribbon="See code on Github"
+    >
+      See code on Github
+    </a>
 
-    <div id="result" style="background-color: black;"></div>
+    <main>
+      <div class="row">
+        <div class="col">
+          <div id="root"></div>
+        </div>
 
-    <script src="../node_modules/react/umd/react.development.js"></script>
-    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+        <div class="col">
+          <h1>React Dropper</h1>
 
-    <script src="./bundle.js"></script>
+          <p>Pick a color from any image in React</p>
+
+          <h4>Installation</h4>
+
+          <!-- prettier-ignore -->
+          <code>
+<pre>
+npm install react-dropper
+
+# or
+
+yarn add react-dropper
+</pre>
+					</code>
+
+          <h4>Usage</h4>
+
+          <!-- prettier-ignore -->
+          <code>
+<pre>
+import * as React from 'react';
+import { Dropper } from 'react-dropper';
+import { createRoot } from 'react-dom/client';
+
+import Image from './image.jpg';
+
+const App = () => {
+  const [color, setColor] = React.useState('');
+  const [event, setEvent] = React.useState('');
+
+  return (
+  &lt;div className="app"&gt;
+    &lt;Dropper
+      width={400}
+      height={600}
+      image={Image}
+      onChange={(c, e) =&gt; {
+        setColor(c);
+        setEvent(e);
+      }}
+    /&gt;
+
+    &lt;div className="result"&gt;
+      &lt;p&gt;The event type is: {event}&lt;/p&gt;
+
+      &lt;p&gt;
+        The selected color is:
+        &lt;span style={{ width: '1rem', height: '1rem', display: 'inline-block', backgroundColor: color }} /&gt;
+        {color}
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/&gt;
+  );
+};
+
+createRoot(document.getElementById('root')!).render(&lt;App />);
+</pre>
+					</code>
+        </div>
+      </div>
+
+      <social-links></social-links>
+    </main>
+
+    <script type="module" src="index.tsx"></script>
   </body>
 </html>

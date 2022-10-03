@@ -4,27 +4,62 @@ import { createRoot } from 'react-dom/client';
 import { Dropper } from '../dist';
 
 // @ts-ignore
-import * as Avatar from './atanas.jpeg';
+import Image from './image.jpg';
 
-const get = (id: string): HTMLElement | null => document.getElementById(id);
+const App = () => {
+  const [color, setColor] = React.useState('');
+  const [event, setEvent] = React.useState('');
 
-const root = createRoot(document.getElementById('demo') || document.createElement('div'));
+  return (
+    <>
+      <h4>Mousemove or click on the image below</h4>
 
-root.render(
-  <Dropper
-    width={400}
-    height={400}
-    color="#000000"
-    image={Avatar}
-    className="react-dropper"
-    onChange={(color, sync) => {
-      if (get('result')) {
-        get('result')!.style.backgroundColor = color;
-      }
+      <Dropper
+        width={400}
+        height={600}
+        image={Image}
+        onChange={(c: string, e: string) => {
+          setColor(c);
+          setEvent(e);
+        }}
+      />
 
-      if (sync) {
-        alert('Color set to ' + color);
-      }
-    }}
-  />
-);
+      <h4>
+        <small>
+          Photo by{' '}
+          <a rel="noopener noreferrer" href="https://unsplash.com/@gstevens0884" target="_blank">
+            guy stevens
+          </a>{' '}
+          on{' '}
+          <a rel="noopener noreferrer" href="https://unsplash.com/images/nature/rainbow" target="_blank">
+            Unsplash
+          </a>
+        </small>
+      </h4>
+
+      {!!color && !!event && (
+        <div className="result">
+          <p>
+            The event type is: <code>{event}</code>
+          </p>
+
+          <p>
+            The selected color is:
+            <span
+              style={{
+                width: '1rem',
+                height: '1rem',
+                display: 'inline-block',
+                backgroundColor: color,
+                margin: '0 0.25rem -0.125rem 0.25rem'
+              }}
+            />
+            <code>{color}</code>
+          </p>
+        </div>
+      )}
+    </>
+  );
+};
+
+createRoot(document.getElementById('root')!).render(<App />);
