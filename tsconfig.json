@@ -5,6 +5,7 @@
     "baseUrl": "./",
     "checkJs": false,
     "declaration": true,
+    "downlevelIteration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,

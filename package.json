@@ -1,59 +1,71 @@
 {
   "name": "react-dropper",
-  "version": "1.0.0",
-  "description": "Pick color from image in React",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "scripts": {
-    "clear": "rm -rf dist",
-    "start": "tsc -w",
-    "build": "yarn clear && tsc --build tsconfig.json",
-    "test": "jest",
-    "test:coverage": "yarn test --coverage",
-    "lint": "tslint -c tslint.json --project tsconfig.json",
-    "prepare": "yarn lint && yarn build && yarn test",
-    "demo": "webpack --mode production"
-  },
+  "version": "1.1.0",
+  "description": "Pick a color from any image in React",
   "keywords": [
-    "React",
-    "Accordion",
-    "Typescript",
-    "Widget"
+    "React Widget",
+    "React Canvas",
+    "Extract Color",
+    "React Component",
+    "React Extract Color"
   ],
-  "author": "Atanas Atanasov <scriptex.bg@gmail.com> (https://atanas.info)",
-  "repository": "https://github.com/scriptex/react-dropper",
+  "homepage": "https://react-dropper.atanas.info",
   "bugs": {
     "url": "https://github.com/scriptex/react-dropper/issues",
-    "email": "scriptex.bg@gmail.com"
+    "email": "hi@atanas.info"
   },
   "license": "MIT",
+  "author": "Atanas Atanasov <hi@atanas.info> (https://atanas.info)",
+  "funding": "https://github.com/sponsors/scriptex",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "github:scriptex/react-dropper"
+  },
+  "scripts": {
+    "clear": "rm -rf dist && rm -rf demo/dist",
+    "start": "tsc -w",
+    "build": "yarn clear && tsc",
+    "test": "jest --env jsdom",
+    "lint": "eslint 'src/**/*.{ts,tsx}' 'demo/**/*.{ts,tsx}' '__tests__/**/*.{ts,tsx}'",
+    "demo": "parcel build demo/index.html",
+    "demo:watch": "parcel demo/index.html",
+    "prod": "yarn build && yarn lint && yarn test"
+  },
   "dependencies": {
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
-  "peerDependencies": {
-    "react": "^16.9.0 || ^17 || ^18",
-    "react-dom": "^16.9.0 || ^17 || ^18"
-  },
   "devDependencies": {
-    "@types/enzyme": "3.10.12",
-    "@types/jest": "29.1.0",
-    "@types/jsdom": "20.0.0",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "13.4.0",
+    "@types/jest": "29.1.1",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "5.38.1",
     "@typescript-eslint/parser": "5.38.1",
-    "jest": "29.1.1",
-    "jest-css-modules": "2.1.0",
-    "jsdom": "20.0.0",
+    "eslint": "8.24.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-jest": "27.0.4",
+    "eslint-plugin-react": "7.31.8",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "jest": "29.1.2",
+    "jest-canvas-mock": "2.4.0",
+    "jest-environment-jsdom": "29.1.2",
+    "process": "0.11.10",
     "ts-jest": "29.0.3",
     "typescript": "4.8.4"
   },
   "jest": {
+    "setupFiles": [
+      "jest-canvas-mock"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js"
+      "js",
+      "jsx"
     ],
     "transform": {
       "\\.(ts|tsx)$": "ts-jest"

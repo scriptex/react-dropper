@@ -1,14 +1,29 @@
-[![GitHub release](https://img.shields.io/github/release/scriptex/react-dropper.svg)](https://github.com/scriptex/react-dropper/releases/latest)
-[![GitHub issues](https://img.shields.io/github/issues/scriptex/react-dropper.svg)](https://github.com/scriptex/react-dropper/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/scriptex/react-dropper.svg)](https://github.com/scriptex/react-dropper/commits/master)
-[![Build Status](https://travis-ci.com/scriptex/react-dropper.svg?branch=master)](https://travis-ci.com/scriptex/react-dropper)
-[![npm](https://img.shields.io/npm/dt/react-dropper.svg)](https://www.npmjs.com/package/react-dropper)
-[![npm](https://img.shields.io/npm/v/react-dropper.svg)](https://www.npmjs.com/package/react-dropper)
-[![Analytics](https://ga-beacon-361907.ew.r.appspot.com/UA-83446952-1/github.com/scriptex/react-dropper/README.md)](https://github.com/scriptex/react-dropper/)
+[![Travis CI](https://travis-ci.com/scriptex/react-dropper.svg?branch=master)](https://travis-ci.com/scriptex/react-dropper)
+[![Github Build](https://github.com/scriptex/react-dropper/workflows/Build/badge.svg)](https://github.com/scriptex/react-dropper/actions?query=workflow%3ABuild)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/34d3d75710534dc6a38c3584a1dcd068)](https://www.codacy.com/gh/scriptex/react-dropper/dashboard?utm_source=github.com&utm_medium=referral&utm_content=scriptex/react-dropper&utm_campaign=Badge_Grade)
+[![Codebeat Badge](https://codebeat.co/badges/d765a4c8-2c0e-44f2-89c3-fa364fdc14e6)](https://codebeat.co/projects/github-com-scriptex-react-dropper-master)
+[![CodeFactor Badge](https://www.codefactor.io/repository/github/scriptex/react-dropper/badge)](https://www.codefactor.io/repository/github/scriptex/react-dropper)
+[![DeepScan grade](https://deepscan.io/api/teams/3574/projects/5257/branches/40799/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=3574&pid=5257&bid=40799)
+[![Analytics](https://ga-beacon-361907.ew.r.appspot.com/UA-83446952-1/github.com/scriptex/react-dropper/README.md?pixel)](https://github.com/scriptex/react-dropper/)
 
 # React Dropper
 
-Pick color from an image in React
+> Pick a color from any image in React
+
+## Visitor stats
+
+![GitHub stars](https://img.shields.io/github/stars/scriptex/react-dropper?style=social)
+![GitHub forks](https://img.shields.io/github/forks/scriptex/react-dropper?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/scriptex/react-dropper?style=social)
+![GitHub followers](https://img.shields.io/github/followers/scriptex?style=social)
+
+## Code stats
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/scriptex/react-dropper)
+![GitHub repo size](https://img.shields.io/github/repo-size/scriptex/react-dropper?style=plastic)
+![GitHub language count](https://img.shields.io/github/languages/count/scriptex/react-dropper?style=plastic)
+![GitHub top language](https://img.shields.io/github/languages/top/scriptex/react-dropper?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/scriptex/react-dropper?style=plastic)
 
 ## Install
 
@@ -20,15 +35,15 @@ npm i react-dropper
 yarn add react-dropper
 ```
 
-## About
+## Demo
 
-Info about the component
+This component allows you to pick any color from any image rendered in a React application. See [the demo here](https://react-dropper.atanas.info).
 
 ## Usage
 
 ```javascript
 import React from 'react';
-import Dropper from 'react-dropper';
+import { Dropper } from 'react-dropper';
 
 import MyImage from '../images/image.jpg';
 
@@ -36,16 +51,11 @@ ReactDOM.render(
   <Dropper
     width={400}
     height={400}
-    color="#000000"
     image={MyImage}
     className="react-dropper"
-    onChange={(color, sync) => {
-      // Based on the event type
-      // the color can be updated or not
-      // If the event type is click the color is updated
-      // If the event type is mousemove or click, the color is the updated color
-      // If the event type is mouseleave, the color is the old color (coming from props)
-      // The sync flag indicates whether the color has been updated
+    onChange={(color, event) => {
+      // The color is the selected color
+      // The event is the event type - click, mousemove, etc
     }}
   />,
   document.getElementById('demo')
@@ -54,11 +64,18 @@ ReactDOM.render(
 
 ## Props
 
-1. Width - width of the canvas area
-2. Height - height of the canvas area
-3. Color - the initial color of the canvas
-4. Image - url of the image asset - JPG or PNG supported and CORS enabled for external resources
-5. onChange - function which accepts `color` and `sync` arguments (explained above)
+| Prop        | Type       | Required | Default                                  | Description                                                           |
+| ----------- | ---------- | -------- | ---------------------------------------- | --------------------------------------------------------------------- |
+| `image`     | `string`   | true     | ''                                       | URL of the image asset (JPG or PNG) -CORS enabled for external assets |
+| `width`     | `number`   | false    | 300                                      | Width of the canvas area (in px)                                      |
+| `height`    | `number`   | false    | 150                                      | Height of the canvas area (in px)                                     |
+| `className` | `string`   | false    | 'react-dropper'                          | CSS classname for the rendered element                                |
+| `onChange`  | `function` | false    | (color: string, type: string) => unknown | An optional function which accepts two arguments                      |
+
+The `onChange` function accepts two arguments:
+
+- `color`: the selected color
+- `type`: the type of the event - 'click', 'mousemove', etc. Useful when deciding whether you want to store the color or not.
 
 ## Demo
 
@@ -150,7 +167,6 @@ Support and sponsor my work:
 <a href="https://liberapay.com/scriptex/donate" title="Donate on Liberapay">
 	<img src="https://img.shields.io/liberapay/receives/scriptex?label=Donate%20on%20Liberapay&logo=liberapay" />
 </a>
-
 <a href="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/bitcoin.json" title="Donate Bitcoin">
 	<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/scriptex/scriptex/master/badges/bitcoin.json" />
 </a>

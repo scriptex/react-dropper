@@ -1,24 +1,21 @@
 import * as React from 'react';
 
 interface Props {
-  width: number;
-  height: number;
-  color: string;
   image: string;
-  className: string;
-  onChange: (color: string, sync: boolean) => any;
+  width?: number;
+  height?: number;
+  className?: string;
+  onChange?: (color: string, eventType: string) => unknown;
 }
 
-export const Dropper: React.FC<Readonly<Partial<Props>>> = ({
+export const Dropper: React.FC<Readonly<Props>> = ({
+  image,
   width = 300,
   height = 150,
-  color = '#ffffff',
-  image = '',
   className = 'react-dropper',
-  onChange = (): any => undefined
-}: Partial<Props>) => {
+  onChange = () => undefined
+}: Props) => {
   const canvas: React.MutableRefObject<HTMLCanvasElement | null> = React.createRef();
-  const [oldColor] = React.useState(color);
 
   const drawImage = React.useCallback(() => {
     const imageElement: HTMLImageElement = new Image();
@@ -29,16 +26,18 @@ export const Dropper: React.FC<Readonly<Partial<Props>>> = ({
       }
     };
 
-    imageElement.src = image as any;
+    imageElement.src = image;
     imageElement.crossOrigin = 'Anonymous';
   }, []);
 
   const getImageData = React.useCallback((e: React.MouseEvent<HTMLCanvasElement>): Uint8ClampedArray | void => {
-    if (canvas.current && canvas.current.getContext('2d')) {
-      const offset = canvas.current.getBoundingClientRect();
+    const target = e.target as HTMLCanvasElement;
+
+    if (target && target.getContext('2d')) {
+      const offset = target.getBoundingClientRect();
       const canvasX = Math.floor(e.pageX - offset.left);
       const canvasY = Math.floor(e.pageY - offset.top);
-      const imageData = canvas.current.getContext('2d')?.getImageData(canvasX, canvasY, 1, 1);
+      const imageData = target.getContext('2d')?.getImageData(canvasX, canvasY, 1, 1);
 
       return imageData?.data;
     }
@@ -52,7 +51,7 @@ export const Dropper: React.FC<Readonly<Partial<Props>>> = ({
     const data = getImageData(e);
 
     if (!data?.length) {
-      onChange(oldColor, false);
+      onChange('', '');
 
       return;
     }
@@ -60,13 +59,7 @@ export const Dropper: React.FC<Readonly<Partial<Props>>> = ({
     const [r, g, b]: Uint8ClampedArray = data;
     const newColor: string = `#${(b + 256 * g + 65536 * r).toString(16)}`;
 
-    if (e.type === 'mousemove') {
-      onChange(newColor, false);
-    }
-
-    if (e.type === 'click') {
-      onChange(newColor, true);
-    }
+    onChange(newColor, e.type);
   }, []);
 
   React.useEffect(() => {

@@ -1,7 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`React Dropper component should render successfully 1`] = `ShallowWrapper {}`;
+exports[`Dropper component Should render the Dropper component 1`] = `
+<DocumentFragment>
+  <canvas
+    class="react-dropper"
+    height="150"
+    width="300"
+  />
+</DocumentFragment>
+`;
 
-exports[`React Dropper component should render successfully 2`] = `ShallowWrapper {}`;
+exports[`Dropper component Should render the Dropper component 2`] = `
+<DocumentFragment>
+  <canvas
+    class="react-dropper"
+    height="150"
+    width="300"
+  />
+</DocumentFragment>
+`;
 
-exports[`React Dropper component should render successfully with default props 1`] = `ShallowWrapper {}`;
+exports[`Dropper component Should render the Dropper component 3`] = `
+<DocumentFragment>
+  <canvas
+    class="react-dropper"
+    height="150"
+    width="300"
+  />
+</DocumentFragment>
+`;
+
+exports[`Dropper component Should unmount the Dropper component 1`] = `<DocumentFragment />`;

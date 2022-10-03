@@ -17,5 +17,5 @@ node_modules/
 ehthumbs.db
 Thumbs.db
 
-# Coverage report
-/coverage
+.parcel-cache
+dist
