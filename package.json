@@ -29,7 +29,7 @@
     "build": "yarn clear && tsc",
     "test": "jest --env jsdom",
     "lint": "eslint 'src/**/*.{ts,tsx}' 'demo/**/*.{ts,tsx}' '__tests__/**/*.{ts,tsx}'",
-    "deduplicate": "yarn-deduplicate --packages @types/react yarn.lock",
+    "deduplicate": "yarn-deduplicate",
     "prod": "yarn deduplicate && yarn lint && yarn build && yarn test"
   },
   "dependencies": {
@@ -56,6 +56,9 @@
     "ts-jest": "29.1.0",
     "typescript": "5.0.4",
     "yarn-deduplicate": "6.0.1"
+  },
+  "resolutions": {
+    "@types/react": "18.0.34"
   },
   "jest": {
     "setupFiles": [
