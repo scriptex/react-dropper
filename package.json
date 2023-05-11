@@ -55,7 +55,7 @@
     "process": "0.11.10",
     "ts-jest": "29.1.0",
     "typescript": "5.0.4",
-    "yarn-deduplicate": "6.0.1"
+    "yarn-deduplicate": "6.0.2"
   },
   "resolutions": {
     "@types/react": "18.2.6"
