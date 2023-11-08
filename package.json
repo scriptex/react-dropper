@@ -40,8 +40,8 @@
     "@testing-library/jest-dom": "6.1.4",
     "@testing-library/react": "14.0.0",
     "@types/jest": "29.5.8",
-    "@types/react": "18.2.36",
-    "@types/react-dom": "18.2.14",
+    "@types/react": "18.2.37",
+    "@types/react-dom": "18.2.15",
     "@typescript-eslint/eslint-plugin": "6.10.0",
     "@typescript-eslint/parser": "6.10.0",
     "eslint": "8.53.0",
@@ -58,7 +58,7 @@
     "yarn-deduplicate": "6.0.2"
   },
   "resolutions": {
-    "@types/react": "18.2.36"
+    "@types/react": "18.2.37"
   },
   "jest": {
     "setupFiles": [
