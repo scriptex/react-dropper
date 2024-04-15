@@ -21,7 +21,7 @@ export const Dropper: React.FC<Readonly<Props>> = ({
     const imageElement: HTMLImageElement = new Image();
 
     imageElement.onload = () => {
-      if (canvas.current && canvas.current.getContext('2d')) {
+      if (canvas.current?.getContext('2d')) {
         canvas.current.getContext('2d')?.drawImage(imageElement, 0, 0, width, height);
       }
     };
@@ -33,7 +33,7 @@ export const Dropper: React.FC<Readonly<Props>> = ({
   const getImageData = React.useCallback((e: React.MouseEvent<HTMLCanvasElement>): Uint8ClampedArray | void => {
     const target = e.target as HTMLCanvasElement;
 
-    if (target && target.getContext('2d')) {
+    if (target?.getContext('2d')) {
       const offset = target.getBoundingClientRect();
       const canvasX = Math.floor(e.pageX - offset.left);
       const canvasY = Math.floor(e.pageY - offset.top);
@@ -41,8 +41,6 @@ export const Dropper: React.FC<Readonly<Props>> = ({
 
       return imageData?.data;
     }
-
-    return;
   }, []);
 
   const setColor = React.useCallback(
@@ -67,7 +65,6 @@ export const Dropper: React.FC<Readonly<Props>> = ({
 
   React.useEffect(() => {
     drawImage();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
