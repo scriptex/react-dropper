@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 import { Dropper } from '../dist';
 
-// @ts-ignore
+// @ts-expect-error
 import Image from './image.jpg';
 
 const App = () => {

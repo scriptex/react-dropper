@@ -4,7 +4,7 @@ import { act, render, waitFor, fireEvent, RenderResult } from '@testing-library/
 import { Dropper } from '../src';
 
 const snapshotTest = (
-  Component: React.FC<Readonly<React.ComponentProps<any>>>,
+  Component: React.FC<Readonly<React.ComponentProps<typeof Dropper>>>,
   callback?: (result: RenderResult) => void
 ): void => {
   const { name } = Component;
@@ -14,7 +14,7 @@ const snapshotTest = (
       let result!: RenderResult;
 
       await act(async () => {
-        result = await waitFor(() => render(<Component />));
+        result = await waitFor(() => render(<Component image="" />));
       });
 
       const { asFragment } = result;
@@ -30,11 +30,10 @@ const snapshotTest = (
       let result: RenderResult;
 
       await act(async () => {
-        result = await waitFor(() => render(<Component />));
+        result = await waitFor(() => render(<Component image="" />));
       });
 
-      // @ts-ignore
-      const { unmount, asFragment } = result;
+      const { unmount, asFragment } = result!;
 
       unmount();
 
