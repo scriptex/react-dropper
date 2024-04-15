@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 import { Dropper } from '../dist';
 
-// @ts-expect-error
+// @ts-expect-error Too lazy to add typings fro the jpg module type
 import Image from './image.jpg';
 
 const App = () => {
