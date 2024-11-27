@@ -1,5 +1,12 @@
 {
-  "extends": ["config:base", ":automergePatch", ":automergeMinor", ":automergeBranch", ":disableDependencyDashboard"],
+  "extends": [
+    "config:base",
+    ":automergePatch",
+    ":automergeMinor",
+    ":automergeBranch",
+    ":disableDependencyDashboard",
+    "group:allNonMajor"
+  ],
   "travis": {
     "enabled": true
   },
@@ -13,5 +20,5 @@
   "major": {
     "automerge": false
   },
-  "schedule": ["* * 1,15 * *"]
+  "schedule": ["* * 15,29 * *"]
 }
