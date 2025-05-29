@@ -1827,10 +1827,10 @@ eslint-config-prettier@10.1.5:
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-10.1.5.tgz#00c18d7225043b6fbce6a665697377998d453782"
   integrity sha512-zc1UmCpNltmVY34vuLRV61r1K27sWuX39E+uyUnY8xS2Bex88VV9cugG+UZbRSRGtGyFboj+D8JODyme1plMpw==
 
-eslint-plugin-jest@28.11.1:
-  version "28.11.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-28.11.1.tgz#ab202e4d807ab57b4a812074d2d95dff2c61e7df"
-  integrity sha512-17+112oYbm56kt6ecFDoyi+keLpYblvVG+yze7/DbwsZGorfqaFg9UtgQpaAzJRvA2P64vifMo6WGn7gbj9LXg==
+eslint-plugin-jest@28.11.2:
+  version "28.11.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-28.11.2.tgz#fd70e255e9ca053ee9bbe53bb14746edc562465e"
+  integrity sha512-hv1PA0U+zSxUiOJ0LgebriASzf+R9ej2im+HzmWGZP2HmClgLj+z8aUVGk7OBv8/rhLV/XgxdszL/HQDk/TM3w==
   dependencies:
     "@typescript-eslint/utils" "^6.0.0 || ^7.0.0 || ^8.0.0"
 
