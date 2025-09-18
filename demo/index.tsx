@@ -1,14 +1,14 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { Dropper } from '../dist';
 
 // @ts-expect-error Too lazy to add typings fro the jpg module type
-import Image from './image.jpg';
+import Image from 'url:./image.jpg';
 
 const App = () => {
-  const [color, setColor] = React.useState('');
-  const [event, setEvent] = React.useState('');
+  const [color, setColor] = useState('');
+  const [event, setEvent] = useState('');
 
   return (
     <>
