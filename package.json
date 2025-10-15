@@ -41,8 +41,8 @@
     "@testing-library/jest-dom": "6.8.0",
     "@testing-library/react": "16.3.0",
     "@types/jest": "30.0.0",
-    "@types/react": "19.1.15",
-    "@types/react-dom": "19.1.9",
+    "@types/react": "19.1.17",
+    "@types/react-dom": "19.1.11",
     "@typescript-eslint/eslint-plugin": "8.45.0",
     "@typescript-eslint/parser": "8.45.0",
     "eslint": "9.36.0",
@@ -55,8 +55,8 @@
     "jest-canvas-mock": "2.5.2",
     "jest-environment-jsdom": "30.2.0",
     "process": "0.11.10",
-    "ts-jest": "29.4.4",
-    "typescript": "5.9.2",
+    "ts-jest": "29.4.5",
+    "typescript": "5.9.3",
     "yarn-deduplicate": "6.0.2"
   },
   "peerDependencies": {
